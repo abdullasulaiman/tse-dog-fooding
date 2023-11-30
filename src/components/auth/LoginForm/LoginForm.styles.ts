@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const LoginDescription = styled.div`
   margin-bottom: 1.875rem;
-  color: var(--text-main-color);
+  color: 'white';
   font-size: ${FONT_SIZE.xs};
 
   @media only screen and ${media.xs} {

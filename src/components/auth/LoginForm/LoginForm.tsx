@@ -10,6 +10,15 @@ import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 
+import { ServerConfiguration, ThoughtSpotRestApi, createConfiguration } from '@thoughtspot/rest-api-sdk';
+import { AuthEventEmitter, AuthStatus, AuthType, init } from '@thoughtspot/visual-embed-sdk';
+
+// const username = process.env.USERNAME
+// const password = process.env.PASSWORD
+const username = 'email/username';
+const password = 'pass';
+const tsurl = '';
+
 interface LoginFormData {
   email: string;
   password: string;
@@ -20,6 +29,35 @@ export const initValues: LoginFormData = {
   password: 'some-test-pass',
 };
 
+/* 
+  Init Function for the Login in SDK
+  Using Cookieless Auth Token
+*/
+// const do_init = () => {
+//   console.log('Initialized it');
+//   init({
+//     thoughtSpotHost: 'https://champagne.thoughtspotstaging.cloud',
+//     authType: AuthType.TrustedAuthTokenCookieless,
+//     getAuthToken: async () => {
+//       const config = createConfiguration({
+//         baseServer: new ServerConfiguration('https://champagne.thoughtspotstaging.cloud', {}),
+//       });
+//       const tsRestApiClient = new ThoughtSpotRestApi(config);
+//       const data = await tsRestApiClient.getFullAccessToken({
+//         username,
+//         password,
+//         validity_time_in_sec: 40,
+//       });
+//       console.log(data.token);
+//       console.log('very much inside');
+
+//       return data.token;
+//     },
+//     autoLogin: true,
+//   });
+//   console.log('Init completed');
+// };
+
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -28,10 +66,12 @@ export const LoginForm: React.FC = () => {
   const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (values: LoginFormData) => {
+    console.log('handling submit');
+    // do_init(); /* Init Function Called */
     setLoading(true);
     dispatch(doLogin(values))
       .unwrap()
-      .then(() => navigate('/'))
+      .then(() => navigate('/nft'))
       .catch((err) => {
         notificationController.error({ message: err.message });
         setLoading(false);
@@ -42,7 +82,7 @@ export const LoginForm: React.FC = () => {
     <Auth.FormWrapper>
       <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
-        <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
+        {/* <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription> */}
         <Auth.FormItem
           name="email"
           label={t('common.email')}
@@ -78,14 +118,14 @@ export const LoginForm: React.FC = () => {
             {t('common.login')}
           </Auth.SubmitButton>
         </BaseForm.Item>
-        <BaseForm.Item noStyle>
+        {/* <BaseForm.Item noStyle>
           <Auth.SocialButton type="default" htmlType="submit">
-            {/* <Auth.SocialIconWrapper>
+            <Auth.SocialIconWrapper>
               <GoogleIcon />
-            </Auth.SocialIconWrapper> */}
+            </Auth.SocialIconWrapper>
             {t('login.googleLink')}
           </Auth.SocialButton>
-        </BaseForm.Item>
+        </BaseForm.Item> */}
         {/* <BaseForm.Item noStyle>
           <Auth.SocialButton type="default" htmlType="submit">
             <Auth.SocialIconWrapper>

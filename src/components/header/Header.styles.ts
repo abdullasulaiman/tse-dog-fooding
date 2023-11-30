@@ -74,7 +74,7 @@ export const ProfileColumn = styled(BaseCol)<ProfileColumn>`
     ${(props) =>
       props?.$isTwoColumnsLayout &&
       css`
-        background-color: var(--sider-background-color);
+        background-color: 'white';
         padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
       `}
   }

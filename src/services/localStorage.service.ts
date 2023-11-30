@@ -1,32 +1,31 @@
 import { UserModel } from '@app/domain/UserModel';
-const avatarImg = process.env.REACT_APP_ASSETS_BUCKET + '/avatars/avatar5.webp';
+const avatarImg = 'https://artofproblemsolving.com/assets/images/logos/icon-ba.svg';
 
 const testUser = {
   id: 1,
-  firstName: 'Chris',
-  lastName: 'Johnson',
+  firstName: 'Prashant',
+  lastName: 'Patil',
   imgUrl: avatarImg,
   userName: '@john1989',
   email: {
-    name: 'chris.johnson@altence.com',
+    name: 'prinostaged@gmail.com',
     verified: true,
   },
   phone: {
-    number: '+18143519459',
+    number: '+91 xxxxx xxxxx',
     verified: false,
   },
   sex: 'male',
-  birthday: '01/26/2022',
+  birthday: '01/20/2001',
   lang: 'en',
-  country: 'GB',
-  city: 'London',
-  address1: '14 London Road',
-  zipcode: 5211,
-  website: 'altence.com',
+  country: 'IN',
+  city: 'Hyderabad',
+  address1: 'GAC',
+  zipcode: 500032,
+  website: 'potatoe.com',
   socials: {
     twitter: '@altence_team',
-    facebook: 'https://facebook.com/groups/1076577369582221',
-    linkedin: 'https://linkedin.com/company/altence',
+    linkedin: 'https://linkedin.com/company/Thoughtspot',
   },
 };
 

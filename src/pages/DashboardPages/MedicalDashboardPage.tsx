@@ -27,7 +27,7 @@ const MedicalDashboardPage: React.FC = () => {
     <BaseRow>
       <S.LeftSideCol xl={16} xxl={17}>
         <BaseRow gutter={[30, 30]}>
-          <BaseCol span={24}>
+          {/* <BaseCol span={24}>
             <BaseRow gutter={[30, 30]}>
               <StatisticsCards />
             </BaseRow>
@@ -35,9 +35,9 @@ const MedicalDashboardPage: React.FC = () => {
 
           <BaseCol id="map" span={24}>
             <MapCard />
-          </BaseCol>
+          </BaseCol> */}
 
-          <BaseCol id="latest-screenings" span={24}>
+          {/* <BaseCol id="latest-screenings" span={24}>
             <ScreeningsCard />
           </BaseCol>
 
@@ -63,12 +63,12 @@ const MedicalDashboardPage: React.FC = () => {
 
           <BaseCol id="news" span={24}>
             <NewsCard />
-          </BaseCol>
+          </BaseCol> */}
         </BaseRow>
-        <References />
+        {/* <References /> */}
       </S.LeftSideCol>
 
-      <S.RightSideCol xl={8} xxl={7}>
+      {/* <S.RightSideCol xl={8} xxl={7}>
         <div id="blood-screening">
           <BloodScreeningCard />
         </div>
@@ -76,57 +76,11 @@ const MedicalDashboardPage: React.FC = () => {
         <S.ScrollWrapper id="patient-timeline">
           <PatientResultsCard />
         </S.ScrollWrapper>
-      </S.RightSideCol>
+      </S.RightSideCol> */}
     </BaseRow>
   );
 
-  const mobileAndTabletLayout = (
-    <BaseRow gutter={[20, 20]}>
-      <StatisticsCards />
-
-      {isTablet && (
-        <BaseCol id="map" md={24} order={4}>
-          <MapCard />
-        </BaseCol>
-      )}
-
-      <BaseCol id="latest-screenings" xs={24} md={12} order={(isTablet && 5) || 0}>
-        <ScreeningsCard />
-      </BaseCol>
-
-      <BaseCol id="activity" xs={24} md={12} order={(isTablet && 8) || 0}>
-        <ActivityCard />
-      </BaseCol>
-
-      <BaseCol id="treatment-plan" xs={24} md={24} order={(isTablet && 10) || 0}>
-        <TreatmentCard />
-      </BaseCol>
-
-      <BaseCol id="health" xs={24} md={12} order={(isTablet && 9) || 0}>
-        <HealthCard />
-      </BaseCol>
-
-      <BaseCol id="patient-timeline" xs={24} md={12} order={(isTablet && 11) || 0}>
-        <PatientResultsCard />
-      </BaseCol>
-
-      <BaseCol id="blood-screening" xs={24} md={12} order={(isTablet && 6) || 0}>
-        <BloodScreeningCard />
-      </BaseCol>
-
-      <BaseCol id="favorite-doctors" xs={24} md={24} order={(isTablet && 13) || 0}>
-        <FavoritesDoctorsCard />
-      </BaseCol>
-
-      <BaseCol id="covid" xs={24} md={12} order={(isTablet && 12) || 0}>
-        <CovidCard />
-      </BaseCol>
-
-      <BaseCol id="news" xs={24} md={24} order={(isTablet && 14) || 0}>
-        <NewsCard />
-      </BaseCol>
-    </BaseRow>
-  );
+  const mobileAndTabletLayout = <BaseRow gutter={[20, 20]}>{/* <StatisticsCards /> */}</BaseRow>;
 
   return (
     <>

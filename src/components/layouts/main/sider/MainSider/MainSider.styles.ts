@@ -70,7 +70,6 @@ export const SiderLogoLink = styled(Link)`
   overflow: hidden;
   position: relative;
 `;
-
 export const SiderLogoDiv = styled.div`
   height: ${LAYOUT.mobile.headerHeight};
   padding: ${LAYOUT.mobile.headerPadding};
@@ -82,6 +81,12 @@ export const SiderLogoDiv = styled.div`
     height: ${LAYOUT.desktop.headerHeight};
     padding-top: ${LAYOUT.desktop.paddingVertical};
     padding-bottom: ${LAYOUT.desktop.paddingVertical};
+  }
+
+  img {
+    height: 2rem; /* Set the height to 80% of the parent height */
+    width: auto; /* Allow the width to scale proportionally */
+    object-fit: contain; /* or object-fit: cover; depending on your preference */
   }
 `;
 

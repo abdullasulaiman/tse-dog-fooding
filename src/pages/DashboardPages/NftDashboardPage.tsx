@@ -13,32 +13,43 @@ import * as S from './DashboardPage.styles';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 
+/* 
+  Imports for TS-LB embed
+*/
+import { LiveboardEmbed } from '@thoughtspot/visual-embed-sdk/lib/src/react';
+
+/* 
+  Liveboard Embed Page
+*/
 const MedicalDashboardPage: React.FC = () => {
   const { isDesktop } = useResponsive();
+
+  const LB_ONE = 'lb-id';
 
   const desktopLayout = (
     <BaseRow>
       <S.LeftSideCol xl={16} xxl={17} id="desktop-content">
         <BaseRow gutter={[60, 60]}>
-          <BaseCol span={24}>
+          {/* <BaseCol span={24}>
             <TrendingCreators />
-          </BaseCol>
+          </BaseCol> */}
 
-          <BaseCol span={24}>
+          {/* <BaseCol span={24}>
             <RecentlyAddedNft />
-          </BaseCol>
+          </BaseCol> */}
 
-          <BaseCol span={24}>
+          {/* <BaseCol span={24}>
             <TrendingCollections />
-          </BaseCol>
+          </BaseCol> */}
+          {/* <LiveboardEmbed liveboardId={LB_ONE} /> */}
 
-          <BaseCol span={24}>
+          {/* <BaseCol span={24}>
             <RecentActivity />
-          </BaseCol>
+          </BaseCol> */}
         </BaseRow>
-        <References />
+        {/* <References /> */}
       </S.LeftSideCol>
-
+      {/* 
       <S.RightSideCol xl={8} xxl={7}>
         <div id="balance">
           <Balance />
@@ -51,7 +62,7 @@ const MedicalDashboardPage: React.FC = () => {
         <S.ScrollWrapper id="activity-story">
           <ActivityStory />
         </S.ScrollWrapper>
-      </S.RightSideCol>
+      </S.RightSideCol> */}
     </BaseRow>
   );
 
@@ -77,7 +88,7 @@ const MedicalDashboardPage: React.FC = () => {
 
   return (
     <>
-      <PageTitle>NFT Dashboard</PageTitle>
+      <PageTitle>Home</PageTitle>
       {isDesktop ? desktopLayout : mobileAndTabletLayout}
     </>
   );

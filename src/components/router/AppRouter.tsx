@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // no lazy loading for auth pages to avoid flickering
 const AuthLayout = React.lazy(() => import('@app/components/layouts/AuthLayout/AuthLayout'));
@@ -60,8 +60,8 @@ const ReactSimpleMaps = React.lazy(() => import('@app/pages/maps/ReactSimpleMaps
 const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/PigeonsMapsPage'));
 const Logout = React.lazy(() => import('./Logout'));
 
-export const NFT_DASHBOARD_PATH = '/';
-export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
+export const NFT_DASHBOARD_PATH = '/nft';
+export const MEDICAL_DASHBOARD_PATH = 'medical-dashboard';
 
 const MedicalDashboard = withLoading(MedicalDashboardPage);
 const NftDashboard = withLoading(NftDashboardPage);
@@ -128,8 +128,25 @@ export const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/auth/login" />} />
+        <Route path="/auth" element={<AuthLayoutFallback />}>
+          <Route index path="login" element={<LoginPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route
+            path="lock"
+            element={
+              <RequireAuth>
+                <LockPage />
+              </RequireAuth>
+            }
+          />
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="security-code" element={<SecurityCodePage />} />
+          <Route path="new-password" element={<NewPasswordPage />} />
+        </Route>
         <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
-          <Route index element={<NftDashboard />} />
+          {/* <Route index element={<Navigate to="/auth/login" />} /> */}
+          <Route path="/nft" element={<NftDashboard />} />
           <Route path={MEDICAL_DASHBOARD_PATH} element={<MedicalDashboard />} />
           <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
@@ -183,21 +200,7 @@ export const AppRouter: React.FC = () => {
             <Route path="skeleton" element={<Skeletons />} />
           </Route>
         </Route>
-        <Route path="/auth" element={<AuthLayoutFallback />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
-          <Route
-            path="lock"
-            element={
-              <RequireAuth>
-                <LockPage />
-              </RequireAuth>
-            }
-          />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="security-code" element={<SecurityCodePage />} />
-          <Route path="new-password" element={<NewPasswordPage />} />
-        </Route>
+
         <Route path="/logout" element={<LogoutFallback />} />
       </Routes>
     </BrowserRouter>

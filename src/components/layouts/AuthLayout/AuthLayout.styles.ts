@@ -36,7 +36,7 @@ export const FormWrapper = styled.div`
   padding: 2.5rem;
   width: 31.75rem;
   overflow: auto;
-  background-color: rgba(var(--background-rgb-color), 0.93);
+  background-color: 'rgba(255,255,255, 0.8)';
   border-radius: ${BORDER_RADIUS};
 
   @media only screen and ${media.xs} {
