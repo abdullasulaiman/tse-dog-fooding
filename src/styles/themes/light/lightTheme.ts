@@ -65,7 +65,7 @@ export const lightColorsTheme: ITheme = {
   siderBackground: '#ffffff',
   spinnerBase: '#f42f25',
   scroll: '#c5d3e0',
-  border: '#cce1f4',
+  border: '#1f2021',
   borderNft: '#79819A',
   textMain: '#404040',
   textLight: '#9A9B9F',

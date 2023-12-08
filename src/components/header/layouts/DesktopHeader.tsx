@@ -1,8 +1,5 @@
 import React from 'react';
-import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
-import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
-import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
 import { HeaderFullscreen } from '../components/HeaderFullscreen/HeaderFullscreen';
 import * as S from '../Header.styles';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
@@ -17,18 +14,14 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
     <>
       <S.SearchColumn xl={16} xxl={17}>
         <BaseRow justify="space-between">
-          <BaseCol xl={15} xxl={12}>
-            {/* <HeaderSearch /> */}
-          </BaseCol>
+          <BaseCol xl={15} xxl={12}></BaseCol>
           <BaseCol>{/* <S.GHButton /> */}</BaseCol>
         </BaseRow>
       </S.SearchColumn>
     </>
   ) : (
     <>
-      <BaseCol lg={10} xxl={8}>
-        {/* <HeaderSearch /> */}
-      </BaseCol>
+      <BaseCol lg={10} xxl={8}></BaseCol>
       <BaseCol>{/* <S.GHButton /> */}</BaseCol>
     </>
   );
@@ -44,14 +37,6 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
               <BaseCol>
                 <HeaderFullscreen />
               </BaseCol>
-
-              {/* <BaseCol>
-                <NotificationsDropdown />
-              </BaseCol>
-
-              <BaseCol>
-                <SettingsDropdown />
-              </BaseCol> */}
             </BaseRow>
           </BaseCol>
 

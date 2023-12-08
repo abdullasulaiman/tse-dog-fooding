@@ -15,3 +15,8 @@ export const LayoutMain = styled(BaseLayout)`
     margin-left: unset;
   }
 `;
+
+export const FullScreenLayout = styled.div`
+  height: 100%;
+  width: 100%;
+`;

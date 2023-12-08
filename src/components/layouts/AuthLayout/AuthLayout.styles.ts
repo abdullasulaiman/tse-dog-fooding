@@ -34,14 +34,14 @@ export const LoginWrapper = styled.div`
 
 export const FormWrapper = styled.div`
   padding: 2.5rem;
-  width: 31.75rem;
+  width: 20rem;
   overflow: auto;
-  background-color: 'rgba(255,255,255, 0.8)';
-  border-radius: ${BORDER_RADIUS};
+  background-color: var(--primary-color);
+  color: var(--primary1-color);
 
   @media only screen and ${media.xs} {
     padding: 2.5rem 1.25rem;
-    width: 20.75rem;
+    width: 15rem;
     max-height: calc(100vh - 3rem);
   }
 
@@ -53,7 +53,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.div`
-  color: var(--primary-color);
+  color: var(--primary1-color);
 
   @media only screen and ${media.xs} {
     margin-bottom: 0.625rem;
@@ -80,6 +80,7 @@ export const FormTitle = styled.div`
 export const FormCheckbox = styled(BaseCheckbox)`
   display: flex;
   padding-left: 0.125rem;
+  color: var(--primary1-color);
 
   & .ant-checkbox-inner {
     border-radius: 3px;
@@ -92,6 +93,7 @@ export const FormCheckbox = styled(BaseCheckbox)`
 `;
 
 export const FormItem = styled(BaseForm.Item)`
+  color: var(--primary1-color);
   margin-bottom: 0.75rem;
   & .ant-form-item-control-input {
     min-height: 3.125rem;
@@ -102,7 +104,6 @@ export const FormItem = styled(BaseForm.Item)`
   }
 
   & label {
-    color: var(--primary-color);
     font-size: ${FONT_SIZE.xs};
     line-height: 1.25rem;
   }
@@ -113,7 +114,7 @@ export const FormItem = styled(BaseForm.Item)`
 `;
 
 export const FormInput = styled(CommonInput)`
-  color: var(--text-main-color);
+  color: var(--primary1-color);
   background: transparent;
 
   & input.ant-input {
@@ -122,7 +123,7 @@ export const FormInput = styled(CommonInput)`
 `;
 
 export const FormInputPassword = styled(CommonInputPassword)`
-  color: var(--text-main-color);
+  color: var(--primary1-color);
   background: transparent;
 
   & input.ant-input {
@@ -137,14 +138,14 @@ export const ActionsWrapper = styled.div`
 `;
 
 export const Text = styled.span`
-  color: var(--text-main-color);
+  color: var(--primary1-color);
   font-size: ${FONT_SIZE.xs};
   font-weight: ${FONT_WEIGHT.regular};
 `;
 
 export const LinkText = styled(Text)`
   text-decoration: underline;
-  color: var(--primary-color);
+  color: var(--primary1-color);
 `;
 
 export const SubmitButton = styled(BaseButton)`
@@ -156,8 +157,8 @@ export const SubmitButton = styled(BaseButton)`
 export const SocialButton = styled(BaseButton)`
   font-size: ${FONT_SIZE.md};
   font-weight: ${FONT_WEIGHT.semibold};
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  // color: var(--primary-color);
+  border: 1px solid var(--primary1-color);
   width: 100%;
   margin-top: 1rem;
   display: flex;
