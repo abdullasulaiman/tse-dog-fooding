@@ -101,6 +101,31 @@ export const LoginForm: React.FC = () => {
         >
           <Auth.FormInputPassword placeholder={t('common.password')} />
         </Auth.FormItem>
+        <Auth.FormItem
+          label={t('common.authtype')}
+          name="authtype"
+          rules={[{ required: true, message: t('common.requiredField') }]}
+        >
+          <Auth.StyledSelect
+            popupClassName="popup-styles"
+            dropdownStyle={{ background: 'white' }}
+            className="select-bg"
+            bordered
+            options={[
+              {
+                label: 'CookieBasedAuth',
+                options: [
+                  { label: 'Basic', value: 'basicauth' },
+                  { label: 'TokenBased', value: 'tokenbasedauth' },
+                ],
+              },
+              {
+                label: 'CookieLess',
+                options: [{ label: 'cookieless', value: 'cookieless' }],
+              },
+            ]}
+          />
+        </Auth.FormItem>
         <BaseForm.Item noStyle>
           <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
             {t('common.login')}

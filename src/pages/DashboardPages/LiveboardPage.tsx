@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as S from './DashboardPage.styles';
+import './LiveboardPage.css';
+
+import { Select, Space } from 'antd';
+import type { SelectProps } from 'antd';
+const { Option } = Select;
+
+/* Props Selection Options */
+const options: SelectProps['options'] = [];
+
+for (let i = 10; i < 36; i++) {
+  options.push({
+    label: i.toString(36) + i,
+    value: i.toString(36) + i,
+    color: 'orange',
+  });
+}
 
 /* 
   Imports for TS-LB embed
 */
 import { Action, LiveboardEmbed } from '@thoughtspot/visual-embed-sdk/lib/src/react';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
+import styled, { css } from 'styled-components';
 
 /*
   Dummy Data for Application for Filters
@@ -107,10 +124,14 @@ const LiveboardPage: React.FC = () => {
     }
   }, []);
 
+  const handleChange = (value: string[]) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     <S.FullScreenCol id="lb-embed">
       <PageTitle>{t('common.liveboard')}</PageTitle>
-      <S.FilterComponent>
+      {/* <S.FilterComponent>
         <S.Label>Select Column:</S.Label>
         <S.Select onChange={(e) => setFilter(JSON.parse(e.target.value))}>
           <S.Options value="">Select</S.Options>
@@ -149,23 +170,50 @@ const LiveboardPage: React.FC = () => {
             </S.Select>
           </div>
         )}
-      </S.FilterComponent>
-      <LiveboardEmbed
-        disabledActions={[
-          Action.DownloadAsPdf,
-          Action.Edit,
-          Action.ExportTML,
-          Action.Share,
-          Action.RenameModalTitleDescription,
-          Action.SpotIQAnalyze,
-        ]}
-        hiddenActions={[Action.SyncToOtherApps, Action.SyncToSheets, Action.ManagePipelines]}
-        // hideLiveboardHeader={true}
-        // hideTabPanel={true}
-        visibleTabs={['f897c5de-ee38-46e0-9734-d9ed5d4ecc83', 'bf1d15f4-3690-4b37-8cd1-5f0967cf588c']}
-        liveboardId={LB_ONE}
-        frameParams={{ height: `${containerDimensions.height * 0.8}px` }}
-      />
+      </S.FilterComponent> */}
+      <Space style={{ width: '100%' }} direction="vertical">
+        <Select
+          popupClassName="popup-styles"
+          dropdownStyle={{ background: 'white' }}
+          className="select-bg"
+          mode="multiple"
+          allowClear
+          style={{ width: '100%' }}
+          placeholder="Please select"
+          defaultValue={['a10', 'c12']}
+          onChange={handleChange}
+          options={options}
+        />
+
+        <Select
+          className="select-bg"
+          mode="multiple"
+          disabled
+          style={{ width: '100%', background: 'white' }}
+          placeholder="Please select"
+          defaultValue={['a10', 'c12']}
+          onChange={handleChange}
+          options={options}
+        />
+      </Space>
+      <S.LiveboardComponent>
+        <LiveboardEmbed
+          disabledActions={[
+            Action.DownloadAsPdf,
+            Action.Edit,
+            Action.ExportTML,
+            Action.Share,
+            Action.RenameModalTitleDescription,
+            Action.SpotIQAnalyze,
+          ]}
+          hiddenActions={[Action.SyncToOtherApps, Action.SyncToSheets, Action.ManagePipelines]}
+          // hideLiveboardHeader={true}
+          // hideTabPanel={true}
+          visibleTabs={['f897c5de-ee38-46e0-9734-d9ed5d4ecc83', 'bf1d15f4-3690-4b37-8cd1-5f0967cf588c']}
+          liveboardId={LB_ONE}
+          frameParams={{ height: `${containerDimensions.height * 0.8}px` }}
+        />
+      </S.LiveboardComponent>
     </S.FullScreenCol>
   );
 };

@@ -7,6 +7,7 @@ import loginBackground from '@app/assets/images/login-bg.webp';
 import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
 import { BaseCheckbox } from '@app/components/common/BaseCheckbox/BaseCheckbox';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
+import { Select } from 'antd';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -115,10 +116,10 @@ export const FormItem = styled(BaseForm.Item)`
 
 export const FormInput = styled(CommonInput)`
   color: var(--primary1-color);
-  background: transparent;
+  background: white;
 
   & input.ant-input {
-    background: transparent;
+    background: white;
   }
 `;
 
@@ -128,6 +129,30 @@ export const FormInputPassword = styled(CommonInputPassword)`
 
   & input.ant-input {
     background: transparent;
+  }
+`;
+
+export const StyledSelect = styled(Select)`
+  --item-hover-bg: rgb(0, 0, 139, 0.5);
+  --ant-primary-1: lightgray;
+  && {
+    width: 100%; /* Set the width as required */
+
+    .ant-select-selector {
+      background-color: white;
+
+      &:hover,
+      &.ant-select-selection-selected {
+        background-color: lightgray;
+      }
+    }
+
+    .ant-select-dropdown-menu-item {
+      background-color: red;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
   }
 `;
 

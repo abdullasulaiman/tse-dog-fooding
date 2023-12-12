@@ -5,30 +5,30 @@ import { ITheme } from '../types';
 
 const chartColors = {
   chartTooltipLabel: '#6a7985',
-  chartColor1: '#339CFD',
-  chartColor1Tint: '#339CFD', // update
-  chartColor2: '#dc88f5',
-  chartColor2Tint: '#dc88f5', // update
-  chartColor3: '#FFB765',
-  chartColor3Tint: '#FFB765', // update
-  chartColor4: '#306955',
-  chartColor4Tint: '#306955', // update
-  chartColor5: '#ff3d71',
-  chartColor5Tint: '#ff3d71', // update
+  chartColor1: '#ffffff',
+  chartColor1Tint: '#ffffff', // update
+  chartColor2: '#ffffff',
+  chartColor2Tint: '#ffffff', // update
+  chartColor3: '#ffffff',
+  chartColor3Tint: '#ffffff', // update
+  chartColor4: '#ffffff',
+  chartColor4Tint: '#ffffff', // update
+  chartColor5: '#ffffff',
+  chartColor5Tint: '#ffffff', // update
   chartPrimaryGradient: new graphic.LinearGradient(0, 0, 0, 1, [
     {
       offset: 0,
-      color: 'rgba(51, 156, 253, 0.35)',
+      color: '#ffffff',
     },
     {
       offset: 1,
-      color: 'rgba(51, 156, 253, 0)',
+      color: 'ffffff',
     },
   ]),
   chartSecondaryGradient: new graphic.LinearGradient(0, 0, 0, 1, [
     {
       offset: 0,
-      color: 'rgba(255, 82, 82, 0.35)',
+      color: 'ffffff',
     },
     {
       offset: 1,
@@ -62,7 +62,7 @@ export const darkColorsTheme: ITheme = {
   additionalBackground: '#1D203E',
   collapseBackground: '#1D203E',
   timelineBackground: '#f5f5f5',
-  siderBackground: '#121430',
+  siderBackground: '#ffffff',
   spinnerBase: '#339CFD',
   scroll: '#797C9A',
   border: '#1f2021',

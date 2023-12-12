@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { LAYOUT, media } from '@app/styles/themes/constants';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
+import { Select } from 'antd';
 
 export const RightSideCol = styled(BaseCol)`
   padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
@@ -71,13 +72,13 @@ export const Label = styled.label`
   margin-right: 2em;
 `;
 
-export const Select = styled.select`
-  color: white;
-  border-radius: 5px;
-  background-color: rgb(15, 15, 15, 0.1);
-  margin: 0.5rem;
-  padding: 0.5rem;
-`;
+// export const Select = styled.select`
+//   color: white;
+//   border-radius: 5px;
+//   background-color: rgb(15, 15, 15, 0.1);
+//   margin: 0.5rem;
+//   padding: 0.5rem;
+// `;
 export const Options = styled.option`
   background-color: white;
   color: red !important;
@@ -89,4 +90,31 @@ export const FilterComponent = styled.div`
   margin: 1rem;
   background-color: rgb(0, 0, 0, 0.8);
   color: white;
+`;
+
+export const StyledSelect = styled(Select)`
+  && {
+    width: 100%; /* Set the width as required */
+
+    .ant-select-selector {
+      background-color: white;
+
+      &:hover,
+      &.ant-select-selection-selected {
+        background-color: lightgray;
+      }
+    }
+
+    .ant-select-dropdown-menu-item {
+      background-color: red;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+  }
+`;
+
+export const LiveboardComponent = styled.div`
+  margin-top: 0.25em;
+  margin-bottom: 0em;
 `;

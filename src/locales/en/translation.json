@@ -120,6 +120,7 @@
     "apps": "Apps",
     "auth": "Auth",
     "authPages": "Auth Pages",
+    "authtype": "Authentication Type",
     "auto": "Auto",
     "autocomplete": "AutoComplete",
     "avatar": "Avatar",
