@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const LoginDescription = styled.div`
   margin-bottom: 1.875rem;
-  color: var(--text-main-color);
+  color: 'white';
   font-size: ${FONT_SIZE.xs};
 
   @media only screen and ${media.xs} {
@@ -30,4 +30,12 @@ export const ForgotPasswordText = styled.span`
   color: var(--text-light-color);
   font-size: ${FONT_SIZE.xs};
   text-decoration: underline;
+`;
+
+export const Options = styled.option`
+  color: var(--primary1-color);
+  background-color: var(--primary-color);
+  padding: 0.5em;
+  width: 100%;
+  height: 1em;
 `;

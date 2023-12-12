@@ -19,3 +19,7 @@ export const DownArrow = styled(DownOutlined)`
     color: var(--text-main-color);
   }
 `;
+
+export const UserDetailsSpan = styled.span`
+  color: var(--text-dark-color);
+`;

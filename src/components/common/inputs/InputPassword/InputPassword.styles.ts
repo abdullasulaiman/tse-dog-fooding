@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { BaseInput } from '../BaseInput/BaseInput';
 
 export const InputPassword = styled(BaseInput.Password)`
+  color: var(--primary1-color) !important;
   .ant-input-password-icon.anticon {
-    color: var(--disabled-color);
+    color: var(--primary1-color) !important;
     &:hover {
-      color: var(--text-main-color);
+      color: black;
     }
   }
 `;

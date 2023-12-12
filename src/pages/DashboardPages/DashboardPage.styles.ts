@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { LAYOUT, media } from '@app/styles/themes/constants';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
+import { Select } from 'antd';
 
 export const RightSideCol = styled(BaseCol)`
   padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
@@ -14,11 +15,20 @@ export const RightSideCol = styled(BaseCol)`
 `;
 
 export const LeftSideCol = styled(BaseCol)`
-  @media only screen and ${media.xl} {
-    padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
-    height: calc(100vh - ${LAYOUT.desktop.headerHeight});
-    overflow: auto;
+  width: 100%;
+  height: 100%;
+  back @media only screen and ${media.xl} {
+    // padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
+    // height: calc(100vh - ${LAYOUT.desktop.headerHeight});
+    // overflow: auto;
   }
+`;
+
+export const FullScreenCol = styled.div`
+  width: 100%;
+  height: 100%;
+  display: 'flex';
+  margin: 'auto';
 `;
 
 export const Space = styled.div`
@@ -42,9 +52,7 @@ export const BlockWrapper = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   gap: 15px;
-
   background: black;
-
   min-height: 300px;
   overflow-y: auto;
 `;
@@ -53,4 +61,60 @@ export const Item = styled.div`
   background: red;
   height: 150px;
   flex-shrink: 0;
+`;
+
+export const Dropdown = styled.input`
+  padding: 0.5rem;
+`;
+
+export const Label = styled.label`
+  color: white;
+  margin-right: 2em;
+`;
+
+// export const Select = styled.select`
+//   color: white;
+//   border-radius: 5px;
+//   background-color: rgb(15, 15, 15, 0.1);
+//   margin: 0.5rem;
+//   padding: 0.5rem;
+// `;
+export const Options = styled.option`
+  background-color: white;
+  color: red !important;
+`;
+
+export const FilterComponent = styled.div`
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem;
+  background-color: rgb(0, 0, 0, 0.8);
+  color: white;
+`;
+
+export const StyledSelect = styled(Select)`
+  && {
+    width: 100%; /* Set the width as required */
+
+    .ant-select-selector {
+      background-color: white;
+
+      &:hover,
+      &.ant-select-selection-selected {
+        background-color: lightgray;
+      }
+    }
+
+    .ant-select-dropdown-menu-item {
+      background-color: red;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+  }
+`;
+
+export const LiveboardComponent = styled.div`
+  margin-top: 0.25em;
+  margin-bottom: 0em;
 `;

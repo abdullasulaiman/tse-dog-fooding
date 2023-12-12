@@ -21,7 +21,7 @@ export const ProfileDropdown: React.FC = () => {
         </BaseCol>
         {isTablet && (
           <BaseCol>
-            <span>{`${user.firstName} ${user.lastName[0]}`}</span>
+            <S.UserDetailsSpan>{`${user.firstName} ${user.lastName[0]}`}</S.UserDetailsSpan>
           </BaseCol>
         )}
       </S.ProfileDropdownHeader>

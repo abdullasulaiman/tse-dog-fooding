@@ -55,7 +55,7 @@ export const Table = styled(AntdTable)`
     border-radius: 0.1875rem;
     height: 1.25rem;
     width: 1.25rem;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary1-color);
   }
 
   & .editable-row .ant-form-item-explain {

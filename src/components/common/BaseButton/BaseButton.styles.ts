@@ -69,20 +69,20 @@ export const Button = styled(AntButton)<BtnProps>`
       ${props.type === 'ghost' &&
       css`
         &:hover {
-          color: var(--secondary-color);
+          color: var(--background-color);
 
-          border-color: var(--secondary-color);
+          border-color: var(--background-color);
         }
       `}
 
       ${props.type === 'primary' &&
       css`
-        background: var(--primary-color);
+        background: var(--primary1-color);
 
         &:hover {
-          background: var(--secondary-color);
+          background: var(--background-color);
 
-          border-color: var(--secondary-color);
+          border-color: var(--primary1-color);
         }
       `}
 

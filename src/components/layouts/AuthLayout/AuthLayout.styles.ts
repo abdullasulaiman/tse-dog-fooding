@@ -7,6 +7,7 @@ import loginBackground from '@app/assets/images/login-bg.webp';
 import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
 import { BaseCheckbox } from '@app/components/common/BaseCheckbox/BaseCheckbox';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
+import { Select } from 'antd';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -34,14 +35,14 @@ export const LoginWrapper = styled.div`
 
 export const FormWrapper = styled.div`
   padding: 2.5rem;
-  width: 31.75rem;
+  width: 20rem;
   overflow: auto;
-  background-color: rgba(var(--background-rgb-color), 0.93);
-  border-radius: ${BORDER_RADIUS};
+  background-color: var(--primary-color);
+  color: var(--primary1-color);
 
   @media only screen and ${media.xs} {
     padding: 2.5rem 1.25rem;
-    width: 20.75rem;
+    width: 15rem;
     max-height: calc(100vh - 3rem);
   }
 
@@ -53,7 +54,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.div`
-  color: var(--primary-color);
+  color: var(--primary1-color);
 
   @media only screen and ${media.xs} {
     margin-bottom: 0.625rem;
@@ -80,6 +81,7 @@ export const FormTitle = styled.div`
 export const FormCheckbox = styled(BaseCheckbox)`
   display: flex;
   padding-left: 0.125rem;
+  color: var(--primary1-color);
 
   & .ant-checkbox-inner {
     border-radius: 3px;
@@ -92,6 +94,7 @@ export const FormCheckbox = styled(BaseCheckbox)`
 `;
 
 export const FormItem = styled(BaseForm.Item)`
+  color: var(--primary1-color);
   margin-bottom: 0.75rem;
   & .ant-form-item-control-input {
     min-height: 3.125rem;
@@ -102,7 +105,6 @@ export const FormItem = styled(BaseForm.Item)`
   }
 
   & label {
-    color: var(--primary-color);
     font-size: ${FONT_SIZE.xs};
     line-height: 1.25rem;
   }
@@ -113,7 +115,16 @@ export const FormItem = styled(BaseForm.Item)`
 `;
 
 export const FormInput = styled(CommonInput)`
-  color: var(--text-main-color);
+  color: var(--primary1-color);
+  background: white;
+
+  & input.ant-input {
+    background: white;
+  }
+`;
+
+export const FormInputPassword = styled(CommonInputPassword)`
+  color: var(--primary1-color);
   background: transparent;
 
   & input.ant-input {
@@ -121,12 +132,27 @@ export const FormInput = styled(CommonInput)`
   }
 `;
 
-export const FormInputPassword = styled(CommonInputPassword)`
-  color: var(--text-main-color);
-  background: transparent;
+export const StyledSelect = styled(Select)`
+  --item-hover-bg: rgb(0, 0, 139, 0.5);
+  --ant-primary-1: lightgray;
+  && {
+    width: 100%; /* Set the width as required */
 
-  & input.ant-input {
-    background: transparent;
+    .ant-select-selector {
+      background-color: white;
+
+      &:hover,
+      &.ant-select-selection-selected {
+        background-color: lightgray;
+      }
+    }
+
+    .ant-select-dropdown-menu-item {
+      background-color: red;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
   }
 `;
 
@@ -137,14 +163,14 @@ export const ActionsWrapper = styled.div`
 `;
 
 export const Text = styled.span`
-  color: var(--text-main-color);
+  color: var(--primary1-color);
   font-size: ${FONT_SIZE.xs};
   font-weight: ${FONT_WEIGHT.regular};
 `;
 
 export const LinkText = styled(Text)`
   text-decoration: underline;
-  color: var(--primary-color);
+  color: var(--primary1-color);
 `;
 
 export const SubmitButton = styled(BaseButton)`
@@ -156,8 +182,8 @@ export const SubmitButton = styled(BaseButton)`
 export const SocialButton = styled(BaseButton)`
   font-size: ${FONT_SIZE.md};
   font-weight: ${FONT_WEIGHT.semibold};
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  // color: var(--primary-color);
+  border: 1px solid var(--primary1-color);
   width: 100%;
   margin-top: 1rem;
   display: flex;

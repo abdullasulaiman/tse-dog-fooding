@@ -11,14 +11,14 @@ export type BaseFormItemProps = FormItemProps;
 
 export const BaseFormItem = styled(Form.Item)<InternalFormItemProps>`
   .ant-form-item-label > label {
-    color: var(--primary-color);
+    color: var(--primary1-color);
   }
 
   .ant-input-group-addon:first-of-type {
     font-weight: 600;
     width: 5rem;
 
-    color: var(--primary-color);
+    color: var(--primary1-color);
 
     .anticon,
     svg {
@@ -73,7 +73,7 @@ export const BaseFormItem = styled(Form.Item)<InternalFormItemProps>`
       .ant-input {
         &,
         &:hover {
-          border-color: var(--success-color);
+          border-color: var(--primary1-color);
         }
       }
 
@@ -82,7 +82,7 @@ export const BaseFormItem = styled(Form.Item)<InternalFormItemProps>`
 
         &::after {
           content: '✓ ${props.$successText}';
-          color: var(--success-color);
+          color: var(--primary1-color);
         }
       }
     `}

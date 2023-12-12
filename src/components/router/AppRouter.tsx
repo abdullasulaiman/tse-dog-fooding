@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // no lazy loading for auth pages to avoid flickering
 const AuthLayout = React.lazy(() => import('@app/components/layouts/AuthLayout/AuthLayout'));
@@ -14,8 +14,8 @@ import MainLayout from '@app/components/layouts/main/MainLayout/MainLayout';
 import ProfileLayout from '@app/components/profile/ProfileLayout';
 import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
-import NftDashboardPage from '@app/pages/DashboardPages/NftDashboardPage';
-import MedicalDashboardPage from '@app/pages/DashboardPages/MedicalDashboardPage';
+import HomePage from '@app/pages/DashboardPages/HomePage';
+import LiveboardPage from '@app/pages/DashboardPages/LiveboardPage';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const DataTablesPage = React.lazy(() => import('@app/pages/DataTablesPage'));
@@ -60,11 +60,11 @@ const ReactSimpleMaps = React.lazy(() => import('@app/pages/maps/ReactSimpleMaps
 const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/PigeonsMapsPage'));
 const Logout = React.lazy(() => import('./Logout'));
 
-export const NFT_DASHBOARD_PATH = '/';
-export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
+export const HOME_PATH = '/dfg';
+export const LIVEBOARD_PATH = 'liveboard';
 
-const MedicalDashboard = withLoading(MedicalDashboardPage);
-const NftDashboard = withLoading(NftDashboardPage);
+// const LiveboardPage = withLoading(LiveboardPage);
+const Home = withLoading(HomePage);
 const NewsFeed = withLoading(NewsFeedPage);
 const AdvancedForm = withLoading(AdvancedFormsPage);
 
@@ -128,9 +128,26 @@ export const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
-          <Route index element={<NftDashboard />} />
-          <Route path={MEDICAL_DASHBOARD_PATH} element={<MedicalDashboard />} />
+        {/* Need Redirect when user is logged in already. */}
+        <Route path="/" element={<Navigate to="/auth/login" />} />
+        <Route path="/auth" element={<AuthLayoutFallback />}>
+          <Route index path="login" element={<LoginPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route
+            path="lock"
+            element={
+              <RequireAuth>
+                <LockPage />
+              </RequireAuth>
+            }
+          />
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="security-code" element={<SecurityCodePage />} />
+          <Route path="new-password" element={<NewPasswordPage />} />
+        </Route>
+        <Route path={HOME_PATH} element={protectedLayout}>
+          <Route path="dashboard" element={<HomePage />} />
+          <Route path={LIVEBOARD_PATH} element={<LiveboardPage />} />
           <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
           </Route>
@@ -183,21 +200,7 @@ export const AppRouter: React.FC = () => {
             <Route path="skeleton" element={<Skeletons />} />
           </Route>
         </Route>
-        <Route path="/auth" element={<AuthLayoutFallback />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
-          <Route
-            path="lock"
-            element={
-              <RequireAuth>
-                <LockPage />
-              </RequireAuth>
-            }
-          />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="security-code" element={<SecurityCodePage />} />
-          <Route path="new-password" element={<NewPasswordPage />} />
-        </Route>
+
         <Route path="/logout" element={<LogoutFallback />} />
       </Routes>
     </BrowserRouter>

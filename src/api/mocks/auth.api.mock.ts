@@ -2,19 +2,46 @@ import { httpApiMock } from '@app/api/mocks/http.api.mock';
 import { AuthData } from '@app/api/auth.api';
 import { initValues } from '@app/components/auth/LoginForm/LoginForm';
 
-const avatarImg = process.env.REACT_APP_ASSETS_BUCKET + '/avatars/avatar5.webp';
+import { ServerConfiguration, ThoughtSpotRestApi, createConfiguration } from '@thoughtspot/rest-api-sdk';
+import { AuthEventEmitter, AuthStatus, AuthType, init } from '@thoughtspot/visual-embed-sdk';
+
+// const avatarImg = process.env.REACT_APP_ASSETS_BUCKET + '/avatars/avatar5.webp';
+const avatarImg = 'https://avatars.githubusercontent.com/u/141843298?v=4';
+
+const do_init = (email: any, password: any) => {
+  init({
+    thoughtSpotHost: 'tsurl',
+    authType: AuthType.Basic,
+    username: email,
+    password: password,
+    getAuthToken: async () => {
+      const config = createConfiguration({
+        baseServer: new ServerConfiguration('tsurl', {}),
+      });
+      const tsRestApiClient = new ThoughtSpotRestApi(config);
+      const data = await tsRestApiClient.getFullAccessToken({
+        username: email,
+        password,
+        validity_time_in_sec: 40,
+      });
+
+      return data.token;
+    },
+    autoLogin: true,
+  });
+};
 
 httpApiMock.onPost('login').reply((config) => {
   const data: AuthData = JSON.parse(config.data || '');
-  if (data.password === initValues.password) {
+  if (true) {
     return [
       200,
       {
         token: 'bearerToken',
         user: {
           id: 1,
-          firstName: 'Chris',
-          lastName: 'Johnson',
+          firstName: 'Prashant',
+          lastName: 'Patil',
           imgUrl: avatarImg,
           userName: '@john1989',
           email: {
@@ -41,7 +68,7 @@ httpApiMock.onPost('login').reply((config) => {
         },
       },
     ];
-  } else return [401, { message: 'Invalid Credentials' }];
+  }
 });
 
 httpApiMock.onPost('signUp').reply(200);

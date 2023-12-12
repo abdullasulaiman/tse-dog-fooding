@@ -12,6 +12,7 @@ export const Sider = styled(BaseLayout.Sider)`
   z-index: 5;
   min-height: 100vh;
   max-height: 100vh;
+  width: 100%;
 
   color: var(--text-secondary-color);
 
@@ -32,6 +33,7 @@ export const CollapseButton = styled(BaseButton)<{ $isCollapsed: boolean }>`
   transition: all 0.2s ease;
   position: absolute;
   right: 0.5rem;
+  width: 100%;
 
   ${(props) =>
     props.$isCollapsed &&
@@ -57,6 +59,8 @@ export const CollapseButton = styled(BaseButton)<{ $isCollapsed: boolean }>`
 export const SiderContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
+  width: 100%;
   max-height: calc(100vh - ${LAYOUT.mobile.headerHeight});
 
   @media only screen and ${media.md} {
@@ -69,8 +73,8 @@ export const SiderLogoLink = styled(Link)`
   align-items: center;
   overflow: hidden;
   position: relative;
+  background: var(--primary-color);
 `;
-
 export const SiderLogoDiv = styled.div`
   height: ${LAYOUT.mobile.headerHeight};
   padding: ${LAYOUT.mobile.headerPadding};
@@ -82,6 +86,12 @@ export const SiderLogoDiv = styled.div`
     height: ${LAYOUT.desktop.headerHeight};
     padding-top: ${LAYOUT.desktop.paddingVertical};
     padding-bottom: ${LAYOUT.desktop.paddingVertical};
+  }
+
+  img {
+    height: 2rem; /* Set the height to 80% of the parent height */
+    width: auto; /* Allow the width to scale proportionally */
+    object-fit: contain; /* or object-fit: cover; depending on your preference */
   }
 `;
 
